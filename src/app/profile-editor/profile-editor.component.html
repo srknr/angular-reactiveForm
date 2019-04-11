@@ -33,10 +33,30 @@
     <input type="text" formControlName="zip">
   </label></p>
 
+</div>
+
+<div formArrayName="aliases">
+  <h3>Aliases</h3>
+  <button (click)="addAlias()">Add Alias</button>
+  <div *ngFor="let address of aliases.controls; let i = index">
+    <label>
+      Alias: <input type="text" [formControlName]="i">
+    </label>
+  </div>
 
 </div>
+
+
 </form>
 
 <button type="submit" [disabled]="!profileForm.valid">Submit</button>
 
 <button (click)="updateProfile()">Update Name</button>
+<button (click)="loadConsole()">console</button>
+<p>
+
+  Form Status: {{ profileForm.status }}
+  Form Value: {{profileForm.value.address.street}}
+ 
+</p>
+
